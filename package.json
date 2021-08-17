@@ -1,0 +1,25 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "API desenvolvida para Núcleo de Praticas em Engenharia de Software",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "author": "Turma 2021/1 T05",
+  "license": "ISC",
+  "dependencies": {
+    "@brazilian-utils/validators": "^0.1.9",
+    "await-exec": "^0.1.2",
+    "bcryptjs": "^2.4.3",
+    "crypto": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "email-validator": "^2.0.4",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.5.1",
+    "sequelize": "^6.5.0",
+    "sequelize-cli": "^6.2.0",
+    "yarn": "^1.22.10"
+  }
+}
