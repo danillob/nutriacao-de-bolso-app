@@ -1,4 +1,6 @@
 const Sequelize = require('sequelize');
+
+
 const postgres = require('../config/database');
 
 const Action = require('../database/models/Action');
@@ -13,8 +15,14 @@ const ExternalLink = require('./models/ExternalLink');
 const CategoryInformation = require('./models/CategoryInformation');
 
 
-const conn = new Sequelize(postgres);
-
+// const conn = new Sequelize(postgres);
+const conn = new Sequelize(process.env.DATABASE_URL, {
+    dialect: 'postgres',
+    protocol: 'postgres',
+    dialectOptions: {
+        ssl: true
+    }
+});
 
 User.init(conn);
 DocumentCategory.init(conn);
