@@ -186,4 +186,4 @@ As seguintes pessoas contribuiram para este projeto:
 
 ## Licença de uso
 
-Este é um projeto privado com direitos reservados para a Universidade Federal do Mato Grosso do Sul.
+Este é um projeto privado com direitos reservados para a Universidade Federal do Mato Grosso do Sul. 
