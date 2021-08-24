@@ -9,6 +9,14 @@ module.exports = {
     database: process.env.DB_NAME,
     logging: false,
     storage: './__tests__/database.sqlite',
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
+    },
+    logging: false,
+    storage: './__tests__/database.sqlite',
     define: {
         timestamps: true,
         underscored: true
