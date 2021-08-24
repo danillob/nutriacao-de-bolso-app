@@ -1,4 +1,3 @@
-
 require('dotenv').config();
   
 module.exports = {
@@ -7,6 +6,12 @@ module.exports = {
     username: process.env.DB_USER,
     password: process.env.DB_PASS,
     database: process.env.DB_NAME,
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false
+        }
+    },
     logging: false,
     storage: './__tests__/database.sqlite',
     define: {

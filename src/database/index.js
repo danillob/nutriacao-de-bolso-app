@@ -1,4 +1,6 @@
 const Sequelize = require('sequelize');
+
+
 const postgres = require('../config/database');
 
 const Action = require('../database/models/Action');
@@ -14,7 +16,6 @@ const CategoryInformation = require('./models/CategoryInformation');
 
 
 const conn = new Sequelize(postgres);
-
 
 User.init(conn);
 DocumentCategory.init(conn);
