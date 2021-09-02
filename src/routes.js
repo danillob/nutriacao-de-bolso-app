@@ -1,5 +1,4 @@
 const express = require('express');
-const cors = require('cors');
 const token = require('./middlewares/AuthMiddleware');
 const UserController = require('./controllers/UserController');
 const DocumentCategory = require('./controllers/DocumentCategoryController');
@@ -13,7 +12,6 @@ const Information = require('./controllers/InformationController');
 const LoginController = require('./controllers/LoginController');
 
 const routes = express.Router();
-routes.use(cors());
 
 //Login routes
 routes.post('/auth', LoginController.auth);
