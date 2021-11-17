@@ -86,7 +86,7 @@ module.exports = {
         try {
             const { id } = req.params;
             const { information } = req.body;
-            const action = await Pratice.findByPk(id);
+            const pratice = await Pratice.findByPk(id);
 
             if (!pratice)
                 return res.status(400).send({ error: "action not found." });
