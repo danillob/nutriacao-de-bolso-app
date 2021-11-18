@@ -1,4 +1,4 @@
-const Pratice = require("../database/models/Pratice");
+const Practice = require("../database/models/Practice");
 
 
 module.exports = {
@@ -6,9 +6,9 @@ module.exports = {
         try {
             const { information } = req.body;
 
-            const pratice = await Pratice.create({ information });
+            const practice = await Practice.create({ information });
 
-            return res.status(201).send(pratice);
+            return res.status(201).send(practice);
         } catch (err) {
             return res.status(400).send({ error: err.message });
         }
@@ -18,10 +18,10 @@ module.exports = {
     async index(req, res) {
         try {
 
-            const pratice = await Pratice.findAll({
-                include: {association: 'subtitles'},
+            const practice = await Practice.findAll({
+                include: {association: 'practice_practice_group'},
             });
-            return res.status(200).send(pratice);
+            return res.status(200).send(practice);
         } catch (err) {
             return res.status(400).send({ error: err.message });
         }
@@ -30,13 +30,13 @@ module.exports = {
     async get(req, res) {
         try {
             const {id} = req.params;
-            const pratice = await Pratice.findAll({
+            const practice = await Practice.findAll({
                 where: { id: id },
                 include: {
-                  association: 'subtitles',
+                  association: 'practice_practice_group',
                 },
             });
-            return res.status(200).send(pratice);
+            return res.status(200).send(practice);
         } catch (err) {
             return res.status(400).send({ error: err.message });
         }
@@ -45,56 +45,32 @@ module.exports = {
     async delete(req, res) {
         try {
             const { id } = req.params;
-            const pratice = await Pratice.findByPk(id);
+            const practice = await Practice.findByPk(id);
 
-            if (!pratice)
-                return res.status(400).send({ error: "pratice not found." });
+            if (!practice)
+                return res.status(400).send({ error: "Practice not found." });
 
-            await pratice.destroy();
+            await practice.destroy();
 
-            return res.status(200).send({ message: "the pratice has been deleted.", action: pratice });
+            return res.status(200).send({ message: "the practice has been deleted.", action: practice });
         } catch (err) {
             return res.status(400).send({ error: err.message });
         }
     },
-
-    async deleteSubtitle(req, res) {
-        try {
-            const { pratice_id, subtitle_id } = req.params;
-            const subtitle = await Subtitle.findByPk(subtitle_id)
-
-            if(!subtitle)
-                throw new Error("subtitle not found.");
-
-            const pratice = await Pratice.findByPk(pratice_id)
-
-            if(!pratice)
-                throw new Error("pratice not found.");
-
-            await pratice.removeSubtitle(subtitle);
-
-            return res.status(200).send({ message: "the subtitle has been deleted."});
-
-
-        } catch (err) {
-            return res.status(400).send({ error: err.message });
-        }
-    },
-
 
     async update(req, res) {
         try {
             const { id } = req.params;
             const { information } = req.body;
-            const pratice = await Pratice.findByPk(id);
+            const practice = await Practice.findByPk(id);
 
-            if (!pratice)
-                return res.status(400).send({ error: "action not found." });
+            if (!practice)
+                return res.status(400).send({ error: "practice not found." });
 
-            pratice.setAttributes({ information });
-            await pratice.save();
+            practice.setAttributes({ information });
+            await practice.save();
 
-            return res.status(200).send({ message: "the action has been changed.", action: pratice });
+            return res.status(200).send({ message: "the practice has been changed.", practice: practice });
         } catch (err) {
             return res.status(400).send({ error: err.message });
         }
