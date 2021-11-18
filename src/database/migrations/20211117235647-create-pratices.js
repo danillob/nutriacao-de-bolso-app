@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('actions', {
+    await queryInterface.createTable('practices', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -17,10 +17,10 @@ module.exports = {
         type: Sequelize.TEXT('long'),
         allowNull: false
       },
-      practices_group_id: {
+      practice_groups_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: 'practices', key: 'id' },
+        references: { model: 'practice_groups', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },
