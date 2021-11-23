@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('practices', {
+    await queryInterface.createTable('practice_categories', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -13,14 +13,10 @@ module.exports = {
         type: Sequelize.TEXT('long'),
         allowNull: false
       },
-      description: {
-        type: Sequelize.TEXT('long'),
-        allowNull: false
-      },
-      practice_groups_id: {
+      subcategory_of: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        references: { model: 'practice_groups', key: 'id' },
+        allowNull: true,
+        references: { model: 'practice_categories', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },
@@ -36,6 +32,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('actions');
+    await queryInterface.dropTable('practice_categories');
   }
 };
