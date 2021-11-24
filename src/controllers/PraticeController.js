@@ -2,6 +2,7 @@ const Practice = require("../database/models/Practice");
 
 
 module.exports = {
+  
     async store(req, res) {
         try {
             const { information } = req.body;
@@ -19,7 +20,7 @@ module.exports = {
         try {
 
             const practice = await Practice.findAll({
-                include: {association: 'practice_practice_group'},
+                include: {association: 'practice_practice_category'},
             });
             return res.status(200).send(practice);
         } catch (err) {
@@ -33,7 +34,7 @@ module.exports = {
             const practice = await Practice.findAll({
                 where: { id: id },
                 include: {
-                  association: 'practice_practice_group',
+                  association: 'practice_practice_category',
                 },
             });
             return res.status(200).send(practice);
