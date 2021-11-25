@@ -17,8 +17,8 @@ module.exports = {
             }
 
             const jwtToken = User.generateJwt(user);
-
-            return res.status(200).send({ message: 'user has been logged', token: jwtToken });
+            
+            return res.status(200).send({ message: 'user has been logged', user: {id: user.id,nome: user.name, email: user.email}, token: jwtToken });
         } catch (error) {
             return res.status(500).send({ message: error.message });
         }
