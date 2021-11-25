@@ -4,7 +4,7 @@
   "description": "API desenvolvida para Núcleo de Praticas em Engenharia de Software",
   "main": "src/server.js",
   "scripts": {
-    "start": "nodemon src/server.js"
+    "start": "node src/server.js"
   },
   "author": "Turma 2021/1 T05",
   "license": "ISC",
