@@ -1,5 +1,4 @@
 const express = require('express');
-
 const token = require('./middlewares/AuthMiddleware');
 const UserController = require('./controllers/UserController');
 const DocumentCategory = require('./controllers/DocumentCategoryController');
