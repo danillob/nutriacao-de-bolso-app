@@ -35,7 +35,7 @@ sudo ./db_create_migrate.sh
 | HTTP Request | Endpoint | Token | Body | Descrição |
 | ------ | ------ | ------ | ------ | ------ |
 | GET | /users | JWT  |  | Lista todos os usuários cadastrados |
-| POST | /users | | {name: ```String```, email:```String```, password: ```String```}    | Cadastra um novo usuário |
+| POST | /users | | {name: ```String```, email:```String```, password: ```String```,cpf: ```String```,telephone: ```String```}    | Cadastra um novo usuário |
 | DELETE | /users/:id | JWT |  | Deleta um usuário |
 
 ### Auth
@@ -45,16 +45,27 @@ sudo ./db_create_migrate.sh
 | POST | /auth | {email: ```String```, password: ```String```} | Vereifica o login e fornece o token de acesso JWT |
 
 
-### Document Category
+### Practice Category
 
 | HTTP Request | Endpoint | Token | Body | Descrição |
 | ------ | ------ | ------ | ------ | ------ |
-| GET | /document-categories |  |  | Lista o todas as categorias de documentos |
-| PUT | /document-categories/:id | JWT | {category: ```String```} | Atualiza uma categoria de documento específica |
-| POST | /document-categories | JWT | {category: ```String```} | Cria uma categoria de documento |
-| DELETE | /document-categories/:id | JWT |  | Deleta uma categoria de documento específica |
+| GET | /practice-categories |  |  | Lista o todas as categorias de praticas |
+| GET | /practice-categories/:id |  |  | Lista uma categoria de pratica específica |
+| PUT | /practice-categories/:id | JWT | {title: ```String```, subcategory_of: ```String```} | Atualiza uma categoria de praticas específica |
+| POST | /practice-categories | JWT | {title: ```String```, subcategory_of: ```String```} | Cria uma categoria de praticas |
+| DELETE | /practice-categories/:id | JWT |  | Deleta uma categoria de praticas específica |
 
-### External Link
+### Practice
+
+| HTTP Request | Endpoint | Token | Body | Descrição |
+| ------ | ------ | ------ | ------ | ------ |
+| GET | /practice |  |  | Lista o todas as praticas |
+| GET | /practice/:id |  |  | Lista uma pratica específica |
+| PUT | /practice/:id | JWT | {description: ```String```, practice_category_id: ```Int``` } | Atualiza uma praticas específica |
+| POST | /practice | JWT | {description: ```String```, practice_category_id: ```Int``` } | Cria uma praticas |
+| DELETE | /practice/:id | JWT |  | Deleta uma praticas específica |
+
+<!-- ### External Link
 
 | HTTP Request | Endpoint | Token | Body | Descrição |
 | ------ | ------ | ------ | ------ | ------ |
@@ -122,7 +133,7 @@ sudo ./db_create_migrate.sh
 | GET | /information/:approach_subject_id/:intervation_level_id/categories |  |  | Lista todas as categorias de ação de um sujeito da abordagem e nível de intervenção |
 | GET | /information/action/:category_information_id |  |  | Lista uma ação específica |
 | POST | /approach-subjects/:id | JWT | {user_id: ```Int```, approach_subject_id: ```Int```, intervation_level_id: ```Int```, action_category_id: ```Int```, action_id: ```Int```} | Cria uma combinação entre ação, nível de intervenção e sujeito da abordagem |
-| DELETE | /information/categories/:id | JWT |  | Deleta uma combinação entre ação, nível de intervenção e sujeito da abordagem |
+| DELETE | /information/categories/:id | JWT |  | Deleta uma combinação entre ação, nível de intervenção e sujeito da abordagem | -->
 
 ## Regras de Negócio
 - Para editar, remover ou criar qualquer um dos items acima, é necessário criar uma conta e gerar um token JWT.
