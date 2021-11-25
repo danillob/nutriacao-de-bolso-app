@@ -18,12 +18,23 @@ class User extends Model {
           min: 6
         }
       },
+      cpf: {
+        type: DataTypes.STRING,
+      },
+      telephone: {
+        type: DataTypes.STRING,
+      },
       role: DataTypes.INTEGER,
 
     }, {
       hooks: {
         beforeValidate: async (user, options) => {
           user.password = await bcrypt.hash(user.password, 10);
+        }
+      },
+      scopes: {
+        withoutPassword: {
+          attributes: { exclude: ['password'] }
         }
       },
       sequelize

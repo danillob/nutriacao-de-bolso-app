@@ -10,6 +10,8 @@ const IntervationLevel = require('./controllers/IntervationLevelController');
 const ApproachSubject = require('./controllers/ApproachSubjectController');
 const Information = require('./controllers/InformationController');
 const LoginController = require('./controllers/LoginController');
+const PracticeCategoryController = require('./controllers/PracticeCategoryController');
+const PracticeController = require('./controllers/PracticeController');
 
 const routes = express.Router();
 
@@ -20,6 +22,23 @@ routes.post('/auth', LoginController.auth);
 routes.post('/users', UserController.store);
 routes.get('/users', token, UserController.index);
 routes.delete('/users/:id', token, UserController.delete);
+
+// PracticeCategory routes
+routes.post('/practice-categories', token, PracticeCategoryController.store);
+routes.get('/practice-categories', PracticeCategoryController.index);
+routes.get('/practice-categories/:id', PracticeCategoryController.get);
+routes.delete('/practice-categories/:id', token, PracticeCategoryController.delete);
+routes.put('/practice-categories/:id', token, PracticeCategoryController.update);
+
+// Practice routes
+routes.post('/practice', token, PracticeController.store);
+routes.get('/practice', PracticeController.index);
+routes.get('/practice/:id', PracticeController.get);
+routes.delete('/practice/:id', token, PracticeController.delete);
+routes.put('/practice/:id', token, PracticeController.update);
+
+
+
 
 // Subtitle routes
 routes.post('/action/:action_id/subtitles', token, Subtitle.store);

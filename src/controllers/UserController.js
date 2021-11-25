@@ -4,9 +4,9 @@ module.exports = {
     async store(req, res) {
 
         try {
-            const { name, email, password } = req.body;
+            const { name, email, password, telephone, cpf } = req.body;
 
-            const user = await User.create({ name, email, password });
+            const user = await User.create({ name, email, password, telephone, cpf });
             const jwtToken = User.generateJwt(user);
 
             return res.status(201).send({user, token: jwtToken});
@@ -17,7 +17,7 @@ module.exports = {
 
     async index(req, res) {
         try {
-            const user = await User.findAll();
+            const user = await User.scope('withoutPassword').findAll();
             return res.status(200).send(user);
         } catch (err) {
             return res.status(400).send({ error: err.message });
