@@ -13,7 +13,8 @@ const User = require('./models/User');
 const DocumentCategory = require('./models/DocumentCategory');
 const ExternalLink = require('./models/ExternalLink');
 const CategoryInformation = require('./models/CategoryInformation');
-
+const PracticeCategory = require('./models/PracticeCategory');
+const Practice = require('./models/Practice');
 
 const conn = new Sequelize(postgres);
 
@@ -27,6 +28,8 @@ IntervationLevel.init(conn);
 Subtitle.init(conn);
 Information.init(conn);
 CategoryInformation.init(conn);
+PracticeCategory.init(conn);
+Practice.init(conn);
 
 
 User.associate(conn.models);
@@ -39,7 +42,8 @@ IntervationLevel.associate(conn.models);
 Subtitle.associate(conn.models);
 Information.associate(conn.models);
 CategoryInformation.associate(conn.models);
-
+PracticeCategory.associate(conn.models);
+Practice.associate(conn.models);
 
 
 module.exports = conn;

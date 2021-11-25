@@ -1,13 +1,11 @@
 const Practice = require("../database/models/Practice");
 
-
 module.exports = {
   
     async store(req, res) {
         try {
-            const { information } = req.body;
-
-            const practice = await Practice.create({ information });
+            const { description, practice_category_id } = req.body;
+            const practice = await Practice.findOrCreate({where:{description, practice_category_id}});
 
             return res.status(201).send(practice);
         } catch (err) {
@@ -31,6 +29,7 @@ module.exports = {
     async get(req, res) {
         try {
             const {id} = req.params;
+            console.log(id)
             const practice = await Practice.findAll({
                 where: { id: id },
                 include: {
