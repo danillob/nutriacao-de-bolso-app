@@ -8,10 +8,10 @@ module.exports = {
     database: process.env.DB_NAME,
     ssl: false,
     dialectOptions: {
-        /*ssl: {
+        ssl: {
             require: true,
             rejectUnauthorized: false
-        }*/
+        }
     },
     logging: false,
     storage: './__tests__/database.sqlite',
