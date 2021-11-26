@@ -15,7 +15,7 @@ class PracticeCategory extends Model {
   }
 
   static associate(models) {
-    this.hasOne(models.PracticeCategory, { foreignKey: "id",  as: 'sub_category_of' });
+    this.belongsTo(models.PracticeCategory, { foreignKey: "subcategory_of",  as: 'sub_category_of' });
     this.belongsTo(models.Practice, {foreignKey: "id", as: 'practice_categories_practices'});
   }
 }
