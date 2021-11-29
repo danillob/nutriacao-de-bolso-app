@@ -18,7 +18,9 @@ module.exports = {
 
     async index(req, res) {
         try {
-            const document = await Document.findAll();
+            const document = await Document.findAll({
+                include: {association: 'document_document_category'},
+            });
             return res.status(200).send(document);
         } catch (err) {
             return res.status(400).send({ error: err.message });

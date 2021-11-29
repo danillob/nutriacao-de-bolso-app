@@ -17,7 +17,7 @@ class Document extends Model {
   }
 
   static associate(models){
-    this.hasOne(models.DocumentCategory, { foreignKey: "document_category_id"});
+    this.belongsTo(models.DocumentCategory, { foreignKey: "document_category_id", as: "document_document_category"});
   }
 }
 module.exports = Document;
