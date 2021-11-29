@@ -1,7 +1,8 @@
 const express = require('express');
 const token = require('./middlewares/AuthMiddleware');
 const UserController = require('./controllers/UserController');
-const DocumentCategory = require('./controllers/DocumentCategoryController');
+const DocumentCategoryController = require('./controllers/DocumentCategoryController');
+const DocumentController = require('./controllers/DocumentController');
 const ExternalLink = require('./controllers/ExternalLinkController');
 const Subtitle = require('./controllers/SubtitleController');
 const ActionCategory = require('./controllers/ActionCategoryController');
@@ -37,7 +38,17 @@ routes.get('/practice/:id', PracticeController.get);
 routes.delete('/practice/:id', token, PracticeController.delete);
 routes.put('/practice/:id', token, PracticeController.update);
 
+// DocumentCategory routes
+routes.post('/document-categories', token, DocumentCategoryController.store);
+routes.get('/document-categories', DocumentCategoryController.index);
+routes.delete('/document-categories/:id', token, DocumentCategoryController.delete);
+routes.put('/document-categories/:id', token, DocumentCategoryController.update);
 
+// Document routes
+routes.post('/documents', token, DocumentController.store);
+routes.get('/documents', DocumentController.index);
+routes.delete('/documents/:id', token, DocumentController.delete);
+routes.put('/documents/:id', token, DocumentController.update);
 
 
 // Subtitle routes
@@ -83,11 +94,7 @@ routes.delete('/actions/:id', token, Action.delete);
 routes.put('/actions/:id', token, Action.update);
 routes.delete('/action/:action_id/:subtitle_id', Action.deleteSubtitle);
 
-// DocumentCategory routes
-routes.post('/document-categories', token, DocumentCategory.store);
-routes.get('/document-categories', DocumentCategory.index);
-routes.delete('/document-categories/:id', token, DocumentCategory.delete);
-routes.put('/document-categories/:id', token, DocumentCategory.update);
+
 
 // ExternalLink routes
 routes.get('/:user_id/user-external-links', ExternalLink.indexFromUsers);

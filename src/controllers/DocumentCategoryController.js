@@ -4,9 +4,9 @@ module.exports = {
     async store(req, res) {
         try {
 
-            const { category } = req.body;
+            const { title } = req.body;
 
-            const documentCategory = await DocumentCategory.create({ category });
+            const documentCategory = await DocumentCategory.create({ title });
 
             return res.status(201).send(documentCategory);
 
