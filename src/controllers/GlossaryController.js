@@ -1,5 +1,5 @@
 const Glossary = require("../database/models/Glossary");
-
+const { Op } = require("sequelize");
 module.exports = {
     async store(req, res) {
         try {
@@ -27,9 +27,11 @@ module.exports = {
 
     async get(req, res) {
         try {
-            const {title} = req.params;
+            const params = req.query;
+            console.log(params.title)
+           
             const glossary = await Glossary.findAll({
-                where: { title: title + "%" }
+                where: {title: {[Op.startsWith]:  params.title}}
             });
             return res.status(200).send(glossary);
         } catch (err) {

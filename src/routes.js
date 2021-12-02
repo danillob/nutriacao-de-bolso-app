@@ -56,7 +56,7 @@ routes.put('/documents/:id', token, DocumentController.update);
 // Glossary routes
 routes.post('/glossaries', token, GlossaryController.store);
 routes.get('/glossaries', GlossaryController.index);
-routes.get('/glossaries/:id', GlossaryController.get);
+routes.get('/glossaries/find-by-title', GlossaryController.get);
 routes.delete('/glossaries/:id', token, GlossaryController.delete);
 routes.put('/glossaries/:id', token, GlossaryController.update);
 
