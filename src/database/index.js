@@ -16,6 +16,7 @@ const ExternalLink = require('./models/ExternalLink');
 const CategoryInformation = require('./models/CategoryInformation');
 const PracticeCategory = require('./models/PracticeCategory');
 const Practice = require('./models/Practice');
+const Glossary = require('./models/Glossary');
 
 const conn = new Sequelize(postgres);
 
@@ -32,6 +33,7 @@ Information.init(conn);
 CategoryInformation.init(conn);
 PracticeCategory.init(conn);
 Practice.init(conn);
+Glossary.init(conn);
 
 
 User.associate(conn.models);
