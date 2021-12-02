@@ -6,6 +6,7 @@ module.exports = {
     username: process.env.DB_USER,
     password: process.env.DB_PASS,
     database: process.env.DB_NAME,
+    ssl: false,
     dialectOptions: {
         ssl: {
             require: true,
@@ -19,3 +20,4 @@ module.exports = {
         underscored: true
     }
 };
+ 

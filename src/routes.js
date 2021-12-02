@@ -1,8 +1,8 @@
 const express = require('express');
-
 const token = require('./middlewares/AuthMiddleware');
 const UserController = require('./controllers/UserController');
-const DocumentCategory = require('./controllers/DocumentCategoryController');
+const DocumentCategoryController = require('./controllers/DocumentCategoryController');
+const DocumentController = require('./controllers/DocumentController');
 const ExternalLink = require('./controllers/ExternalLinkController');
 const Subtitle = require('./controllers/SubtitleController');
 const ActionCategory = require('./controllers/ActionCategoryController');
@@ -11,6 +11,9 @@ const IntervationLevel = require('./controllers/IntervationLevelController');
 const ApproachSubject = require('./controllers/ApproachSubjectController');
 const Information = require('./controllers/InformationController');
 const LoginController = require('./controllers/LoginController');
+const PracticeCategoryController = require('./controllers/PracticeCategoryController');
+const PracticeController = require('./controllers/PracticeController');
+const GlossaryController = require('./controllers/GlossaryController');
 
 const routes = express.Router();
 
@@ -21,6 +24,43 @@ routes.post('/auth', LoginController.auth);
 routes.post('/users', UserController.store);
 routes.get('/users', token, UserController.index);
 routes.delete('/users/:id', token, UserController.delete);
+
+// PracticeCategory routes
+routes.post('/practice-categories', token, PracticeCategoryController.store);
+routes.get('/practice-categories', PracticeCategoryController.index);
+routes.get('/practice-categories/:id', PracticeCategoryController.get);
+routes.delete('/practice-categories/:id', token, PracticeCategoryController.delete);
+routes.put('/practice-categories/:id', token, PracticeCategoryController.update);
+
+// Practice routes
+routes.post('/practice', token, PracticeController.store);
+routes.get('/practice', PracticeController.index);
+routes.get('/practice/:id', PracticeController.get);
+routes.delete('/practice/:id', token, PracticeController.delete);
+routes.put('/practice/:id', token, PracticeController.update);
+
+// DocumentCategory routes
+routes.post('/document-categories', token, DocumentCategoryController.store);
+routes.get('/document-categories', DocumentCategoryController.index);
+routes.get('/document-categories/:id', token, DocumentCategoryController.get);
+routes.delete('/document-categories/:id', token, DocumentCategoryController.delete);
+routes.put('/document-categories/:id', token, DocumentCategoryController.update);
+
+// Document routes
+routes.post('/documents', token, DocumentController.store);
+routes.get('/documents', DocumentController.index);
+routes.get('/documents/:id', token, DocumentController.get);
+routes.delete('/documents/:id', token, DocumentController.delete);
+routes.put('/documents/:id', token, DocumentController.update);
+
+// Glossary routes
+routes.post('/glossaries', token, GlossaryController.store);
+routes.get('/glossaries', GlossaryController.index);
+routes.get('/glossaries/find-by-title', GlossaryController.get);
+routes.delete('/glossaries/:id', token, GlossaryController.delete);
+routes.put('/glossaries/:id', token, GlossaryController.update);
+
+
 
 // Subtitle routes
 routes.post('/action/:action_id/subtitles', token, Subtitle.store);
@@ -65,11 +105,7 @@ routes.delete('/actions/:id', token, Action.delete);
 routes.put('/actions/:id', token, Action.update);
 routes.delete('/action/:action_id/:subtitle_id', Action.deleteSubtitle);
 
-// DocumentCategory routes
-routes.post('/document-categories', token, DocumentCategory.store);
-routes.get('/document-categories', DocumentCategory.index);
-routes.delete('/document-categories/:id', token, DocumentCategory.delete);
-routes.put('/document-categories/:id', token, DocumentCategory.update);
+
 
 // ExternalLink routes
 routes.get('/:user_id/user-external-links', ExternalLink.indexFromUsers);

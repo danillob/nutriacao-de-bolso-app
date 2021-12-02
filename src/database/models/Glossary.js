@@ -1,16 +1,14 @@
 const { Model, DataTypes } = require('sequelize');
 
-class DocumentCategory extends Model {
+class Glossary extends Model {
   static init(sequelize) {
     super.init({
       title: DataTypes.STRING,
+      description: DataTypes.STRING,
      }, {
       sequelize
     })
   }
-
-  static associate(models){
-    this.hasMany(models.Document, { foreignKey: "id"});
-  }
+ 
 }
-module.exports = DocumentCategory;
+module.exports = Glossary;

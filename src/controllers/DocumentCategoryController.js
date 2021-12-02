@@ -4,9 +4,9 @@ module.exports = {
     async store(req, res) {
         try {
 
-            const { category } = req.body;
+            const { title } = req.body;
 
-            const documentCategory = await DocumentCategory.create({ category });
+            const documentCategory = await DocumentCategory.create({ title });
 
             return res.status(201).send(documentCategory);
 
@@ -36,6 +36,18 @@ module.exports = {
             await documentCategory.destroy();
 
             return res.status(200).send({message: "the document category has been deleted.", documentCategory: documentCategory});
+        } catch (err) {
+            return res.status(400).send({ error: err.message });
+        }
+    },
+
+    async get(req, res) {
+        try {
+            const {id} = req.params;
+            const documentCategory = await documentCategory.findAll({
+                where: { id: id }
+            });
+            return res.status(200).send(document);
         } catch (err) {
             return res.status(400).send({ error: err.message });
         }

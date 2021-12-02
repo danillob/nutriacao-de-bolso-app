@@ -27,9 +27,6 @@ sudo ./db_create_migrate.sh
 ```   
   5. Após criar o banco, migrar e povoar as tabelas, teste da maneira que achar melhor 🙂.
 
-## Documentação
-  Para facilitar o teste, um arquivo ``` insomnia.yml ``` está na raiz do projeto, basta importar no Insomnia para usá-lo.
-  
 ### User
 
 | HTTP Request | Endpoint | Token | Body | Descrição |
@@ -64,6 +61,37 @@ sudo ./db_create_migrate.sh
 | PUT | /practice/:id | JWT | {description: ```String```, practice_category_id: ```Int``` } | Atualiza uma praticas específica |
 | POST | /practice | JWT | {description: ```String```, practice_category_id: ```Int``` } | Cria uma praticas |
 | DELETE | /practice/:id | JWT |  | Deleta uma praticas específica |
+
+### Document Category
+
+| HTTP Request | Endpoint | Token | Body | Descrição |
+| ------ | ------ | ------ | ------ | ------ |
+| GET | /document-categories |  |  | Lista o todas as categorias de documentos |
+| GET | /document-categories/:id |  |  | Lista uma categoria de documentos específica |
+| PUT | /document-categories/:id | JWT | {title: ```String```} | Atualiza uma categoria de documentos específica |
+| POST | /document-categories | JWT | {title: ```String```} | Cria uma categoria de documentos |
+| DELETE | /document-categories/:id | JWT |  | Deleta uma categoria de documentos específica |
+
+### Document
+
+| HTTP Request | Endpoint | Token | Body | Descrição |
+| ------ | ------ | ------ | ------ | ------ |
+| GET | /document |  |  | Lista o todas os documentos |
+| GET | /document/:id |  |  | Lista um documento específica |
+| PUT | /document/:id | JWT | {link_site: ```String```,description: ```String```,link_download: ```String```,title: ```String```, document_category_id: ```Int``` } | Atualiza um documento específica |
+| POST | /document | JWT | {link_site: ```String```,description: ```String```,link_download: ```String```,title: ```String```, document_category_id: ```Int``` } | Cria um documento |
+| DELETE | /document/:id | JWT |  | Deleta um documento específico |
+
+
+### Glossary
+
+| HTTP Request | Endpoint | Token | Body | Descrição |
+| ------ | ------ | ------ | ------ | ------ |
+| GET | /glossaries |  |  | Lista o todas os glossarios |
+| GET | /glossaries/find-by-title?title=TITLE |  |  | Lista um glossarios específico |
+| PUT | /glossaries/:id | JWT | {title: ```String```} | Atualiza um glossarios específico |
+| POST | /glossaries | JWT | {title: ```String```} | Cria um glossario |
+| DELETE | /glossaries/:id | JWT |  | Deleta um glossarios específico |
 
 <!-- ### External Link
 
@@ -139,61 +167,15 @@ sudo ./db_create_migrate.sh
 - Para editar, remover ou criar qualquer um dos items acima, é necessário criar uma conta e gerar um token JWT.
 - Nenhuma visualização necessita token JWT.
 
-
-## O que Não Foi Implementado?
-- Edição, criação, removeção e inserção de categoria da ação.
-- edição de informações (Tabela de junção entre ação, nível de intervenção e sujeito da abordagem).
-- Permissão de usuário administrador e usuário comum.
-
  
-
-## Evolução da Aplicação
-* Primeira Sprint
-    * Inception.
-    * Definição de tecnologia.
-    * Configuração de ambiente para condução do projeto.
-    
-* Segunda sprint
-    * Criação do Diagrama de banco de Dados.
-    * CRUD nível de intervenção.
-    * CRUD de usuário.
-    * CRUD sujeito da abordagem.
-    * CRUD de ações.
-    * CRUD de Legendas.
-    * Todas as tabelas do diagrama de banco de dados adicionada via migration.
-    * Docker totalmente implantando.
- 
-* Terceira sprint
-    * Atualização do diagrama de banco de dados.
-    * Todos os CRUDS completos.
-    * Conexão da API com APP.
-    * Tabela de informações.
-    * Documentação RAML da API.
-    * Toda a matriz de nutrição e alimentação povoada no banco via seeders.
-    * Preparação dos testes automatizados.
-
-* Quarta sprint
-    * testes automatizados adcionados.
-    * Testes unitários automatizados com JestJS.
-    * Testes de integração automatizados com JestJS.
-    * Análise estática do código com SonarQube.
-    * SonarQube adicionado.
-    * Nenhum bug reportado pelo SonarQube.
-    * Nenhum Code smell reportado pelo SonarQube.
-    * 92.4% do codigo está coberto por testes.
-
-* Quinta sprint
-    * Documentação geral da API.
-    * Atualização no README.MD.
-    * Diagrama de pacotes.
-    * Diagrama de Implantação.
-    * Git Flow atualizado.
-
 ## Contribuidores
 
 As seguintes pessoas contribuiram para este projeto:
 
 * Igor Galvan (https://github.com/igorbgalvan)
+* Hiroshi Takehisa Neto (https://github.com/HiroshiNeto)
+* Stela Marisco (https://github.com/Smarisco)
+
 
 ## Licença de uso
 
