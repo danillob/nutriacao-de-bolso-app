@@ -72,6 +72,16 @@ sudo ./db_create_migrate.sh
 | POST | /document-categories | JWT | {title: ```String```} | Cria uma categoria de documentos |
 | DELETE | /document-categories/:id | JWT |  | Deleta uma categoria de documentos específica |
 
+### Glossary
+
+| HTTP Request | Endpoint | Token | Body | Descrição |
+| ------ | ------ | ------ | ------ | ------ |
+| GET | /glossaries |  |  | Lista o todas os glossarios |
+| GET | /glossaries/find-by-title?title=TITLE |  |  | Lista um glossarios específico |
+| PUT | /glossaries/:id | JWT | {title: ```String```} | Atualiza um glossarios específico |
+| POST | /glossaries | JWT | {title: ```String```} | Cria um glossario |
+| DELETE | /glossaries/:id | JWT |  | Deleta um glossarios específico |
+
 ### Document
 
 | HTTP Request | Endpoint | Token | Body | Descrição |
