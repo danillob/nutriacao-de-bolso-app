@@ -72,16 +72,6 @@ sudo ./db_create_migrate.sh
 | POST | /document-categories | JWT | {title: ```String```} | Cria uma categoria de documentos |
 | DELETE | /document-categories/:id | JWT |  | Deleta uma categoria de documentos específica |
 
-### Glossary
-
-| HTTP Request | Endpoint | Token | Body | Descrição |
-| ------ | ------ | ------ | ------ | ------ |
-| GET | /glossaries |  |  | Lista o todas os glossarios |
-| GET | /glossaries/find-by-title?title=TITLE |  |  | Lista um glossarios específico |
-| PUT | /glossaries/:id | JWT | {title: ```String```} | Atualiza um glossarios específico |
-| POST | /glossaries | JWT | {title: ```String```} | Cria um glossario |
-| DELETE | /glossaries/:id | JWT |  | Deleta um glossarios específico |
-
 ### Document
 
 | HTTP Request | Endpoint | Token | Body | Descrição |
@@ -91,6 +81,17 @@ sudo ./db_create_migrate.sh
 | PUT | /document/:id | JWT | {link_site: ```String```,description: ```String```,link_download: ```String```,title: ```String```, document_category_id: ```Int``` } | Atualiza um documento específica |
 | POST | /document | JWT | {link_site: ```String```,description: ```String```,link_download: ```String```,title: ```String```, document_category_id: ```Int``` } | Cria um documento |
 | DELETE | /document/:id | JWT |  | Deleta um documento específico |
+
+
+### Glossary
+
+| HTTP Request | Endpoint | Token | Body | Descrição |
+| ------ | ------ | ------ | ------ | ------ |
+| GET | /glossaries |  |  | Lista o todas os glossarios |
+| GET | /glossaries/find-by-title?title=TITLE |  |  | Lista um glossarios específico |
+| PUT | /glossaries/:id | JWT | {title: ```String```} | Atualiza um glossarios específico |
+| POST | /glossaries | JWT | {title: ```String```} | Cria um glossario |
+| DELETE | /glossaries/:id | JWT |  | Deleta um glossarios específico |
 
 <!-- ### External Link
 
