@@ -29,7 +29,6 @@ module.exports = {
     async get(req, res) {
         try {
             const {id} = req.params;
-            console.log(id)
             const practice = await Practice.findAll({
                 where: { id: id },
                 include: {

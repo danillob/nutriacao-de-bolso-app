@@ -41,6 +41,18 @@ module.exports = {
         }
     },
 
+    async get(req, res) {
+        try {
+            const {id} = req.params;
+            const documentCategory = await documentCategory.findAll({
+                where: { id: id }
+            });
+            return res.status(200).send(document);
+        } catch (err) {
+            return res.status(400).send({ error: err.message });
+        }
+    },
+
 
     async update(req, res) {
         try {
