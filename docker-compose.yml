@@ -16,8 +16,8 @@ services:
   nut_db:
     image: postgres
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: wvecavluwpdvqc
+      POSTGRES_PASSWORD: 5562b4625fbca0d044b389fefc865d00d3aa89fe04c9c2d73195ac79e5efd4ba
     volumes:
       - nut_db:/var/lib/postgresql/data
     container_name: nut_db
